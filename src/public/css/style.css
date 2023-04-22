@@ -276,7 +276,9 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 	cursor: pointer;
-	transition: all ease 0.25s;
+	-webkit-transition: background-color 0.25s ease;
+	-ms-transition: background-color 0.25s ease;
+	transition: background-color 0.25s ease;
 }
 
 .thumbnail {
@@ -460,7 +462,9 @@ img,
 	outline: 0;
 	text-align: center;
 	width: 100%;
-	transition: all ease 0.25s;
+	-webkit-transition: background-color 0.25s ease;
+	-ms-transition: background-color 0.25s ease;
+	transition: background-color 0.25s ease;
 }
 
 .submit:hover {
