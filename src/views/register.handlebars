@@ -1,0 +1,46 @@
+<div class="main-container">
+	<div class="transparent" id="custom-target"></div>
+	<div class="register-main-container">
+		<div class="register-header-container">
+			<div class="register-header">Register</div>
+		</div>
+		<div class="register-form-container">
+			<form id="register-form">
+				<div class="register-form-input">
+					<label for="username">Username</label>
+					<input
+						type="text"
+						name="username"
+						id="username"
+						placeholder="Username"
+					/>
+				</div>
+				<div class="register-form-input">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Password"
+					/>
+				</div>
+				<div class="register-form-input">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" placeholder="Email" />
+				</div>
+
+				<div class="register-form-submit">
+					<button
+						class="btn add-btn"
+						type="submit"
+						{{! form="register-form" }}
+					>Register</button>
+				</div>
+			</form>
+			<div class="already-has-account">
+				<p>Already have an account? <a href="/login">Login</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/register.js"></script>

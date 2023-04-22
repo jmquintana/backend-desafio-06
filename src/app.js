@@ -6,14 +6,16 @@ import socket from "./socket.js";
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
 import viewsRouter from "./routes/views.router.js";
+import sessionsRouter from "./routes/sessions.router.js";
 import __dirname from "./utils.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import config from "./config.js";
+import bodyParser from "body-parser";
 
 // Initialization
-const { DB_USER, DB_PASS, DB_NAME } = config;
+const { DB_USER, DB_PASS, DB_NAME, DB_URL, SESSION_SECRET } = config;
 const app = express();
 const PORT = 8080;
 
@@ -25,17 +27,21 @@ app.set("view engine", "handlebars");
 // MiddleWares
 app.use(cookieParser());
 app.use(
-	session({
-		store: MongoStore.create({
-			mongoUrl: `mongodb+srv://${DB_USER}:${DB_PASS}@codercluster.tgft5r9.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
-			ttl: 15,
-		}),
-		secret: "secreto",
-		resave: false,
-		saveUninitialized: true,
+	express.json({
+		type: ["application/json", "text/plain"],
 	})
 );
-app.use(express.json());
+app.use(
+	session({
+		store: MongoStore.create({
+			mongoUrl: DB_URL,
+			ttl: 60 * 5,
+		}),
+		secret: SESSION_SECRET,
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(`${__dirname}/public`));
 app.use(morgan("dev"));
@@ -46,6 +52,7 @@ database.connect();
 // Routes
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
+app.use("/api/sessions", sessionsRouter);
 app.use("/", viewsRouter);
 
 const httpServer = app.listen(PORT, (req, res) => {

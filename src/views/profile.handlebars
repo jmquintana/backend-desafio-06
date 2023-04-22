@@ -1,0 +1,33 @@
+<div class="main-container">
+	<div class="transparent" id="custom-target"></div>
+	<div class="profile-main-container">
+		<div class="profile-header-container">
+			<div class="profile-header">Profile</div>
+		</div>
+		<div class="profile-panel-container">
+			{{! simple profile panel with username, email and a logout button}}
+			<div class="profile-panel-body">
+				<div class="profile-panel-body-row">
+					<div class="profile-panel-body-label">Username:</div>
+					<div class="profile-panel-body-value">{{user.username}}</div>
+				</div>
+				<div class="profile-panel-body-row">
+					<div class="profile-panel-body-label">Email:</div>
+					<div class="profile-panel-body-value">{{user.email}}</div>
+				</div>
+				<div class="profile-panel-body-row">
+					<div class="profile-panel-body-label">Orders:</div>
+					<div class="profile-panel-body-value">{{user.orders}}</div>
+				</div>
+				<div class="profile-panel-body-row">
+					<div class="profile-panel-body-label">Total Spent:</div>
+					<div class="profile-panel-body-value">{{user.totalSpent}}</div>
+				</div>
+			</div>
+			<div class="profile-panel-footer">
+				<button class="delete-btn btn" id="logout-btn">Logout</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/profile.js"></script>
