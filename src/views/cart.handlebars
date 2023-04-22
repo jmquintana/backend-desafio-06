@@ -16,7 +16,9 @@
 						</div>
 						<div class="product-card-details">
 							<div class="product-card-price">
-								${{this.product.price}}<sup>c/u</sup>
+								$<div class="product-card-price-value">
+									{{this.product.price}}
+								</div><sup>c/u</sup>
 							</div>
 							<div class="product-card-category">Cod:
 								{{this.product.code}}</div>
@@ -45,8 +47,13 @@
 									<i class="fas fa-plus"></i>
 								</div>
 							</div>
-							<div class="subTotal">
-								Subtotal: ${{this.subTotal}}
+							<div class="product-card-total">
+								<div class="product-card-total-label">
+									Subtotal: $
+								</div>
+								<div class="product-card-total-value">
+									{{this.subTotal}}
+								</div>
 							</div>
 							<form
 								id="delete-{{this.product._id}}"
@@ -75,7 +82,12 @@
 		</div>
 		<div class="cart-total-price-container">
 			<div class="cart-total-price-label"> Total: </div>
-			<div class="cart-total-price-value"> ${{totalPrice}} </div>
+			<div class="cart-total-price">
+				$
+				<div class="cart-total-price-value">
+					{{totalPrice}}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -40,6 +40,22 @@
 	height: auto;
 }
 
+.product-card-price {
+	display: flex;
+	/* align-items: center; */
+	justify-content: flex-end;
+}
+
+.product-card-price-value {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #15172b;
+}
+
+.product-card-price sup {
+	font-weight: 400;
+}
+
 .product-card-body {
 	display: flex;
 	flex-direction: column;
@@ -164,6 +180,22 @@
 	filter: brightness(90%);
 }
 
+.product-card-total {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.product-card-total-label {
+	font-weight: 400;
+}
+
+.product-card-total-value {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: #15172b;
+}
+
 .cart-total-price-container {
 	background: #eee;
 	border-radius: 1rem;
@@ -176,6 +208,15 @@
 }
 
 .cart-total-price-label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #000;
+}
+
+.cart-total-price {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

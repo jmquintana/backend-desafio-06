@@ -15,7 +15,23 @@ form.addEventListener("submit", (e) => {
 			.then((data) => {
 				console.log(data);
 			});
+		showAlert("Product added to cart", "success");
 	} catch (error) {
 		console.log(error);
 	}
 });
+
+const showAlert = (message, icon) => {
+	Swal.fire({
+		html: message,
+		target: "#custom-target",
+		customClass: {
+			container: "position-absolute",
+		},
+		toast: true,
+		position: "bottom-right",
+		showConfirmButton: false,
+		timer: 1500,
+		icon: icon,
+	});
+};
