@@ -62,11 +62,12 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-bottom: 0.5rem;
+	height: 40px;
+	margin-bottom: 0.2rem;
 }
 
 .profile-panel-body-label {
-	color: #999;
+	color: var(--D-color);
 	font-size: 1rem;
 	font-weight: 600;
 }

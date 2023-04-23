@@ -15,9 +15,6 @@
 	--N-color: #ac0006;
 }
 
-/* register form stylesheet */
-/* HTML Path: ../views/register.handlebars */
-
 .register-main-container {
 	display: flex;
 	flex-direction: column;
@@ -25,53 +22,73 @@
 	margin: 1rem;
 }
 
-.register-header-container {
+.register-form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+	background-color: #fff;
+	width: 20rem;
+	margin: 1rem;
+	overflow: hidden;
+	border-radius: 1rem;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.register-form-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 	padding: 1rem;
+	background-color: var(--A-color);
 }
 
-.register-header {
+.register-title {
 	display: flex;
 	align-items: center;
-	color: #15172b;
+	color: #eee;
 	font-size: 1.5rem;
 	font-weight: 700;
 }
 
-.register-form-container {
+.register-form-body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	padding: 1rem;
-	background-color: var(--A-color);
-	border-radius: 1rem;
-	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+	min-height: 10rem;
+}
+
+#register-form {
+	width: 100%;
+	margin-bottom: 1rem;
 }
 
 .register-form-input {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
+	margin-bottom: 0.2rem;
 }
 
 .register-form-input label {
-	color: #eee;
-	margin-bottom: 0.5rem;
+	color: var(--D-color);
 	font-size: 1rem;
 	font-weight: 600;
+	width: 45%;
 }
 
 .register-form-input input {
-	background-color: var(--M-color);
-	color: #eee;
+	color: #333;
 	font-size: 1rem;
 	font-weight: 600;
 	border: none;
-	border-bottom: 1px solid var(--H-color);
 	margin-left: 1rem;
 	padding: 0.5rem;
+	width: 100%;
 }
 
 .register-form-input input:focus {
@@ -79,7 +96,7 @@
 }
 
 .register-form-input input::placeholder {
-	color: var(--D-color);
+	color: #bbb;
 	font-size: 1rem;
 	font-weight: 600;
 }
@@ -91,19 +108,20 @@
 }
 
 .register-form-input input:invalid {
-	border-bottom: 1px solid var(--N-color);
+	background-color: #ffe6e6;
+	border-bottom: 3px solid var(--N-color);
 }
 
 .register-form-input input:invalid:focus {
-	border-bottom: 1px solid var(--N-color);
+	border-bottom: 3px solid var(--N-color);
 }
 
 .register-form-input input:valid {
-	border-bottom: 1px solid var(--C-color);
+	border-bottom: 3px solid var(--C-color);
 }
 
 .register-form-input input:valid:focus {
-	border-bottom: 1px solid var(--C-color);
+	border-bottom: 3px solid var(--C-color);
 }
 
 .register-form-input input:valid + label {
@@ -114,14 +132,22 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 1rem;
 }
 
 .already-has-account {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #eee;
+	color: #333;
 	font-size: 1rem;
 	font-weight: 600;
+}
+
+.register-form-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #eee;
+	overflow: hidden;
+	padding: 0.5rem;
 }
