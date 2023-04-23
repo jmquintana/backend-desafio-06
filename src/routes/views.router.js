@@ -11,7 +11,6 @@ const router = Router();
 router.get("/", async (req, res) => {
 	const { page = 1, limit = 5 } = req.query;
 	const { user } = req.session;
-	console.log(user);
 	const {
 		docs: products,
 		hasPrevPage,

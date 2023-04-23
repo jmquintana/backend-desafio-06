@@ -3,6 +3,7 @@ console.log("products.js: loaded");
 const cartId = "643e1a3bcd4d41b659f78f79";
 const forms = document.querySelectorAll(".add-form");
 const products = document.querySelectorAll(".product-item-full");
+const logOutBtn = document.querySelector(".profile-logout");
 
 forms.forEach((form) => {
 	form.addEventListener("click", (e) => {
@@ -39,6 +40,30 @@ products.forEach((product) => {
 			console.log(error);
 		}
 	});
+});
+
+logOutBtn.addEventListener("click", async (e) => {
+	e.preventDefault();
+	const email = logOutBtn.id;
+	console.log(email);
+	try {
+		await fetch("/api/sessions/logout", {
+			method: "POST",
+			body: JSON.stringify({ username: email }),
+			header: {
+				"Content-Type": "application/json",
+			},
+		}).then((res) => {
+			if (res.status === 200) {
+				window.location.href = "/login";
+			} else {
+				const error = new Error(res.error);
+				throw error;
+			}
+		});
+	} catch (error) {
+		console.error(error);
+	}
 });
 
 const showAlert = (message, icon) => {
