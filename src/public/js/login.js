@@ -10,16 +10,20 @@ form.addEventListener("submit", async (e) => {
 	console.log(obj);
 
 	try {
-		let response = await fetch("/api/sessions/login", {
+		await fetch("/api/sessions/login", {
 			method: "POST",
 			body: JSON.stringify(obj),
 			header: {
 				"Content-Type": "application/json",
 			},
+		}).then((res) => {
+			if (res.status === 200) {
+				window.location.href = "/profile";
+			} else {
+				const error = new Error(res.error);
+				throw error;
+			}
 		});
-
-		let result = await response.json();
-		console.log(result);
 	} catch (error) {
 		console.error(error);
 	}

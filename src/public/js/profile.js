@@ -1,25 +1,28 @@
 console.log("profile.js");
 
-const form = document.getElementById("profile-form");
+const logOutBtn = document.getElementById("logout-btn");
 
-form.addEventListener("submit", async (e) => {
+logOutBtn.addEventListener("click", async (e) => {
 	e.preventDefault();
-	const formData = new FormData(form);
-	const obj = {};
-	formData.forEach((value, key) => (obj[key] = value));
-	console.log(obj);
-
+	const email = document
+		.getElementById("email")
+		.querySelector(".profile-panel-body-value").innerText;
+	console.log(email);
 	try {
-		let response = await fetch("/api/sessions/login", {
+		let response = await fetch("/api/sessions/logout", {
 			method: "POST",
-			body: JSON.stringify(obj),
+			body: JSON.stringify({ username: email }),
 			header: {
 				"Content-Type": "application/json",
 			},
+		}).then((res) => {
+			if (res.status === 200) {
+				window.location.href = "/login";
+			} else {
+				const error = new Error(res.error);
+				throw error;
+			}
 		});
-
-		let result = await response.json();
-		console.log(result);
 	} catch (error) {
 		console.error(error);
 	}

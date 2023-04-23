@@ -99,6 +99,7 @@ router.get("/login", checkSession, (req, res) => {
 });
 
 router.get("/profile", checkLogin, (req, res) => {
+	console.log(req.session.user);
 	res.render("profile", { user: req.session.user });
 });
 

@@ -27,30 +27,29 @@ app.set("views", `${__dirname}/views`);
 app.set("view engine", "handlebars");
 
 // MiddleWares
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(
 	express.json({
 		type: ["application/json", "text/plain"],
 	})
 );
+app.use(express.urlencoded({ extended: true }));
 app.use(
 	session({
 		store: MongoStore.create({
 			mongoUrl: DB_URL,
 			ttl: 60 * 5,
 		}),
-		secret: SESSION_SECRET,
-		resave: false,
+		resave: true,
 		saveUninitialized: false,
+		secret: SESSION_SECRET,
 	})
 );
 initializePassport();
-
-app.use(express.urlencoded({ extended: true }));
-app.use("/", express.static(`${__dirname}/public`));
-app.use(morgan("dev"));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use("/", express.static(`${__dirname}/public`));
+app.use(morgan("dev"));
 
 // Database connection
 database.connect();

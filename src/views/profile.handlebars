@@ -7,21 +7,21 @@
 				<div class="profile-title">Profile</div>
 			</div>
 			<div class="profile-panel-body">
-				<div class="profile-panel-body-row">
-					<div class="profile-panel-body-label">Username</div>
-					<div class="profile-panel-body-value">{{user.username}}</div>
+				<div class="profile-panel-body-row" id="first-name">
+					<div class="profile-panel-body-label">Name</div>
+					<div class="profile-panel-body-value">{{user.first_name}}</div>
 				</div>
-				<div class="profile-panel-body-row">
+				<div class="profile-panel-body-row" id="last-name">
+					<div class="profile-panel-body-label">Las Name</div>
+					<div class="profile-panel-body-value">{{user.last_name}}</div>
+				</div>
+				<div class="profile-panel-body-row" id="email">
 					<div class="profile-panel-body-label">Email</div>
 					<div class="profile-panel-body-value">{{user.email}}</div>
 				</div>
-				<div class="profile-panel-body-row">
-					<div class="profile-panel-body-label">Orders</div>
-					<div class="profile-panel-body-value">{{user.orders}}</div>
-				</div>
-				<div class="profile-panel-body-row">
-					<div class="profile-panel-body-label">Total Spent</div>
-					<div class="profile-panel-body-value">{{user.totalSpent}}</div>
+				<div class="profile-panel-body-row" id="age">
+					<div class="profile-panel-body-label">Age</div>
+					<div class="profile-panel-body-value">{{user.age}}</div>
 				</div>
 			</div>
 			<div class="profile-panel-footer">

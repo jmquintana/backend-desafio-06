@@ -7,13 +7,30 @@
 		<div class="register-form-container">
 			<form id="register-form">
 				<div class="register-form-input">
-					<label for="username">Username</label>
+					<label for="first_name">Name</label>
 					<input
 						type="text"
-						name="username"
-						id="username"
-						placeholder="Username"
+						name="first_name"
+						id="first_name"
+						placeholder="Name"
 					/>
+				</div>
+				<div class="register-form-input">
+					<label for="last_name">Last Name</label>
+					<input
+						type="text"
+						name="last_name"
+						id="last_name"
+						placeholder="Last Name"
+					/>
+				</div>
+				<div class="register-form-input">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" placeholder="Email" />
+				</div>
+				<div class="register-form-input">
+					<label for="age">Age</label>
+					<input type="text" name="age" id="age" placeholder="Age" />
 				</div>
 				<div class="register-form-input">
 					<label for="password">Password</label>
@@ -24,11 +41,6 @@
 						placeholder="Password"
 					/>
 				</div>
-				<div class="register-form-input">
-					<label for="email">Email</label>
-					<input type="email" name="email" id="email" placeholder="Email" />
-				</div>
-
 				<div class="register-form-submit">
 					<button
 						class="btn add-btn"
