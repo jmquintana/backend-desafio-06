@@ -2,6 +2,7 @@ import { Router } from "express";
 import { productModel } from "../models/products.model.js";
 import ProductManager from "../controllers/products.js";
 import CartsManager from "../controllers/carts.js";
+import { checkLogged, checkLogin, checkSession } from "../middlewares/auth.js";
 
 const cartsManager = new CartsManager();
 const productsManager = new ProductManager();
@@ -89,15 +90,15 @@ router.get("/cart/:cid", async (req, res) => {
 	}
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", checkLogged, (req, res) => {
 	res.render("register");
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", checkSession, (req, res) => {
 	res.render("login");
 });
 
-router.get("/profile", (req, res) => {
+router.get("/profile", checkLogin, (req, res) => {
 	res.render("profile", { user: req.session.user });
 });
 

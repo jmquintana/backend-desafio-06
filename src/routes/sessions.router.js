@@ -47,16 +47,23 @@ router.post("/login", async (req, res) => {
 		// create session
 		req.session.user = { username: user.username, email: user.email };
 
-		return res
-			.status(200)
-			.send({
-				status: "Success",
-				message: "Logged in!",
-				payload: req.session.user,
-			});
+		return res.status(200).send({
+			status: "Success",
+			message: "Logged in!",
+			payload: req.session.user,
+		});
 	} catch (error) {
 		console.error(error);
 	}
+});
+
+router.get("/failRegister", (req, res) => {
+	console.log("Failed Register");
+	return res.send({ status: "error", error: "authentication error" });
+});
+
+router.get("/failLogin", (req, res) => {
+	res.send({ status: "error", error: "failed login" });
 });
 
 export default router;
