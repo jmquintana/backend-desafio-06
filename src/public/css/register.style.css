@@ -165,7 +165,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #333;
+	color: var(--D-color);
 	font-size: 1rem;
 	font-weight: 600;
 }
