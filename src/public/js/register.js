@@ -16,7 +16,7 @@ form.addEventListener("submit", async (e) => {
 				"Content-Type": "application/json",
 			},
 		}).then((response) => {
-			if (response.status === 201) {
+			if (response.status === 200) {
 				window.location.href = "/login";
 			} else {
 				alert("Something went wrong");
