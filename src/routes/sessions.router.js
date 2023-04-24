@@ -17,8 +17,6 @@ router.post(
 	"/login",
 	passport.authenticate("login", { failureRedirect: "/failLogin" }),
 	async (req, res) => {
-		console.log(req.body);
-		console.log(req.user);
 		if (!req.user)
 			return res.status(401).send({ status: "Error", error: "Unauthorized" });
 		req.session.user = {
