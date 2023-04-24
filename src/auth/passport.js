@@ -14,9 +14,11 @@ const initializePassport = () => {
 			},
 			async (req, username, password, done) => {
 				try {
-					const { first_name, last_name, email, age } = req.body;
-
+					const { first_name, last_name, email, age, role } = req.body;
+					console.log({ linea: 18, first_name, last_name, email, age, role });
+					console.log(username);
 					let user = await userModel.findOne({ email: username });
+					console.log(user);
 					if (user) {
 						console.log("User already exists");
 						return done(null, false);
@@ -27,10 +29,12 @@ const initializePassport = () => {
 						last_name,
 						email,
 						age,
+						role,
 						password: createHash(password),
 					};
 
 					let result = await userModel.create(newUser);
+					console.log(result);
 
 					return done(null, result);
 				} catch (error) {

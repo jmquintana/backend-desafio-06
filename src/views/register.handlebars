@@ -33,6 +33,20 @@
 						<label for="age">Edad</label>
 						<input type="text" name="age" id="age" placeholder="Edad" />
 					</div>
+					{{! role radius selector }}
+					<div class="register-form-input">
+						<label for="role">Rol</label>
+						<div class="role-selector">
+							<div class="role-selector-item">
+								<input type="radio" name="role" value="user" checked />
+								<label for="role">Usuario</label>
+							</div>
+							<div class="role-selector-item">
+								<input type="radio" name="role" value="admin" />
+								<label for="role">Admin</label>
+							</div>
+						</div>
+					</div>
 					<div class="register-form-input">
 						<label for="password">Contraseña</label>
 						<input

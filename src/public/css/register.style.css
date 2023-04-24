@@ -72,6 +72,7 @@
 	align-items: center;
 	width: 100%;
 	margin-bottom: 0.2rem;
+	height: 40px;
 }
 
 .register-form-input label {
@@ -91,41 +92,67 @@
 	width: 100%;
 }
 
-.register-form-input input:focus {
+.register-form-input > input:focus {
 	outline: none;
 }
 
-.register-form-input input::placeholder {
+.register-form-input > input::placeholder {
 	color: #bbb;
 	font-size: 1rem;
 	font-weight: 600;
 }
 
-.register-form-input input:focus::placeholder {
+.register-form-input > input:focus::placeholder {
 	color: var(--D-color);
 	font-size: 1rem;
 	font-weight: 600;
 }
 
-.register-form-input input:invalid {
+.register-form-input > input:invalid {
 	background-color: #ffe6e6;
 	border-bottom: 3px solid var(--N-color);
 }
 
-.register-form-input input:invalid:focus {
+.register-form-input > input:invalid:focus {
 	border-bottom: 3px solid var(--N-color);
 }
 
-.register-form-input input:valid {
+.register-form-input > input:valid {
 	border-bottom: 3px solid var(--C-color);
 }
 
-.register-form-input input:valid:focus {
+.register-form-input > input:valid:focus {
 	border-bottom: 3px solid var(--C-color);
 }
 
-.register-form-input input:valid + label {
+.register-form-input > input:valid + label {
 	color: var(--C-color);
+}
+
+.role-selector {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	width: 100%;
+	margin-bottom: 0.2rem;
+	transform: translateY(0.2rem);
+}
+
+.role-selector-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	width: 45%;
+	margin-bottom: 0.2rem;
+}
+
+.role-selector-item label {
+	width: 100%;
+	display: inline-block;
+}
+
+.role-selector-item input {
+	margin: 0;
 }
 
 .register-form-submit {

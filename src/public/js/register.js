@@ -9,16 +9,19 @@ form.addEventListener("submit", async (e) => {
 	console.log(obj);
 
 	try {
-		let response = await fetch("/api/sessions/register", {
+		await fetch("/api/sessions/register", {
 			method: "POST",
 			body: JSON.stringify(obj),
 			header: {
 				"Content-Type": "application/json",
 			},
+		}).then((response) => {
+			if (response.status === 201) {
+				window.location.href = "/login";
+			} else {
+				alert("Something went wrong");
+			}
 		});
-
-		let result = await response.json();
-		console.log(result);
 	} catch (error) {
 		console.error(error);
 	}

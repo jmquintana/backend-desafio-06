@@ -2,6 +2,13 @@
 	<div class="products-main-container">
 		<div class="list-header">
 			<div class="list-title">Lista de productos</div>
+			{{#if user.isAdmin}}
+				<div class="add-btn btn">
+					<a href="/product">
+						<i class="fas fa-upload"></i>
+					</a>
+				</div>
+			{{/if}}
 			<div class="profile-header">
 				<div class="greeting-container">
 					<p class="profile-greeting">Hola,
@@ -10,14 +17,14 @@
 				</div>
 				<div class="profile-icons">
 					<a class="cart profile-icon" href="/cart" alt="View cart">
-						<i class="fas fa-shopping-cart fa-lg"></i>
+						<i class="fas fa-shopping-cart"></i>
 					</a>
 					<a
 						class="profile-view profile-icon"
 						href="/profile"
 						alt="View profile"
 					>
-						<i class="fas fa-user fa-lg"></i>
+						<i class="fas fa-user"></i>
 					</a>
 					<a
 						id="{{user.email}}"
@@ -25,7 +32,7 @@
 						href="/logout"
 						alt="Logout"
 					>
-						<i class="fas fa-sign-out-alt fa-lg"></i>
+						<i class="fas fa-sign-out-alt"></i>
 					</a>
 				</div>
 			</div>

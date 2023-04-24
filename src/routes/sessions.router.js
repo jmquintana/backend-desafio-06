@@ -10,33 +10,6 @@ router.post(
 	passport.authenticate("register", { failureRedirect: "/failRegister" }),
 	async (req, res) => {
 		return res.send({ status: "Success", message: "User registered" });
-
-		// try {
-		// 	const { username, password, email } = req.body;
-		// 	// define user
-		// 	const user = {
-		// 		username,
-		// 		password,
-		// 		email,
-		// 	};
-		// 	console.log({ user });
-
-		// 	// check if user exists
-		// 	const userExists = await userModel.findOne({ email });
-		// 	if (userExists) {
-		// 		return res
-		// 			.status(400)
-		// 			.send({ status: "Error", error: "User already exists" });
-		// 	}
-
-		// 	// create user
-		// 	await userModel.create(user);
-		// 	return res
-		// 		.status(201)
-		// 		.send({ status: "Success", message: "User registered!" });
-		// } catch (error) {
-		// 	console.log(error);
-		// }
 	}
 );
 
@@ -44,16 +17,17 @@ router.post(
 	"/login",
 	passport.authenticate("login", { failureRedirect: "/failLogin" }),
 	async (req, res) => {
+		console.log(req.body);
+		console.log(req.user);
 		if (!req.user)
 			return res.status(401).send({ status: "Error", error: "Unauthorized" });
-
 		req.session.user = {
 			first_name: req.user.first_name,
 			last_name: req.user.last_name,
 			age: req.user.age,
 			email: req.user.email,
+			role: req.user.role,
 		};
-
 		return res
 			.status(200)
 			.send({ status: "Success", payload: req.session.user });
@@ -62,11 +36,11 @@ router.post(
 
 router.get("/failRegister", (req, res) => {
 	console.log("Failed Register");
-	return res.send({ status: "error", error: "authentication error" });
+	return res.send({ status: "Error", error: "Authentication error" });
 });
 
 router.get("/failLogin", (req, res) => {
-	res.send({ status: "error", error: "failed login" });
+	res.send({ status: "Error", error: "Failed login" });
 });
 
 router.put("/restore", async (req, res) => {
@@ -77,7 +51,7 @@ router.put("/restore", async (req, res) => {
 		if (!user) {
 			return res
 				.status(404)
-				.send({ status: "error", error: "user does not exist" });
+				.send({ status: "Error", error: "User does not exist" });
 		}
 
 		const hashedPassword = createHash(password);
@@ -86,7 +60,7 @@ router.put("/restore", async (req, res) => {
 
 		return res.send({
 			status: "Success",
-			message: "Succesfully updated password",
+			message: "Password updated successfully",
 		});
 	} catch (error) {
 		console.log(error);

@@ -8,9 +8,10 @@ const cartsManager = new CartsManager();
 const productsManager = new ProductManager();
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", checkLogin, async (req, res) => {
 	const { page = 1, limit = 5 } = req.query;
-	const { user } = req.session;
+	let { user } = req.session;
+	user.isAdmin = user?.role === "admin";
 	const {
 		docs: products,
 		hasPrevPage,
