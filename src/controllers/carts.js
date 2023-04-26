@@ -153,4 +153,13 @@ export default class CartManager {
 			throw new Error("Product not found in cart");
 		}
 	};
+
+	getCartCount = async (cartId) => {
+		try {
+			const cart = await this.getCartById(cartId);
+			return cart.products.length;
+		} catch (error) {
+			console.log(error);
+		}
+	};
 }

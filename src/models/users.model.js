@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
 		enum: ["admin", "user"],
 		default: "user",
 	},
+	cart: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "carts",
+	},
+});
+
+userSchema.pre("findOne", function () {
+	this.populate("cart");
 });
 
 const userModel = mongoose.model(userCollection, userSchema);

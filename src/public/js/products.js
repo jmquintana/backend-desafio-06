@@ -1,15 +1,18 @@
 console.log("products.js: loaded");
 
-const cartId = "643e1a3bcd4d41b659f78f79";
+const cartId = document.querySelector(".profile-cart").id;
 const forms = document.querySelectorAll(".add-form");
 const products = document.querySelectorAll(".product-item-full");
 const logOutBtn = document.querySelector(".profile-logout");
+const cartBadge = document.querySelector(".cart-badge");
 
 forms.forEach((form) => {
 	form.addEventListener("click", (e) => {
 		e.preventDefault();
 		const productId = e.target.closest(".add-form").id;
 		try {
+			cartBadge.classList.remove("hidden");
+			cartBadge.innerText = parseInt(cartBadge.innerText) + 1;
 			fetch(`/api/carts/${cartId}/product/${productId}`, {
 				method: "POST",
 				headers: {

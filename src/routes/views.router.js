@@ -12,6 +12,8 @@ router.get("/", checkLogin, async (req, res) => {
 	const { page = 1, limit = 5 } = req.query;
 	let { user } = req.session;
 	user.isAdmin = user?.role === "admin";
+	user.cartCount = await cartsManager.getCartCount(user.cart._id);
+
 	const {
 		docs: products,
 		hasPrevPage,

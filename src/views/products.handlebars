@@ -16,15 +16,29 @@
 					</p>
 				</div>
 				<div class="profile-icons">
-					<a class="cart profile-icon" href="#" alt="View cart">
-						<i class="fas fa-shopping-cart"></i>
+					<a
+						class="profile-cart profile-icon"
+						href="/cart/{{user.cart._id}}"
+						alt="View cart"
+						id={{user.cart._id}}
+					>
+						<i class="fas fa-shopping-cart fa-lg"></i>
+						{{#if user.cartCount}}
+							<span class="cart-badge badge-warning" id="lblCartCount">
+								{{user.cartCount}}
+							</span>
+						{{else}}
+							<span class="cart-badge badge-warning hidden">
+								0
+							</span>
+						{{/if}}
 					</a>
 					<a
 						class="profile-view profile-icon"
 						href="/profile"
 						alt="View profile"
 					>
-						<i class="fas fa-user"></i>
+						<i class="fas fa-user fa-lg"></i>
 					</a>
 					<a
 						id="{{user.email}}"
@@ -32,7 +46,7 @@
 						href="/logout"
 						alt="Logout"
 					>
-						<i class="fas fa-sign-out-alt"></i>
+						<i class="fas fa-sign-out-alt fa-lg"></i>
 					</a>
 				</div>
 			</div>
@@ -101,11 +115,13 @@
 		</div>
 		<div class="footer">
 			{{#if hasPrevPage}}
-				<div class="btn prev-btn">
-					<a href="?page={{prevPage}}">Prev</a>
-				</div>
+				<a class="btn prev-btn" href="?page={{prevPage}}">
+					<i class="fa-solid fa-left-long"></i>
+				</a>
 			{{else}}
-				<div class="invisible-btn">Prev</div>
+				<div class="invisible-btn">
+					<i class="fa-solid fa-left-long"></i>
+				</div>
 			{{/if}}
 			<div class="page-index">
 				<p>
@@ -117,11 +133,13 @@
 			</div>
 
 			{{#if hasNextPage}}
-				<div class="btn next-btn">
-					<a href="?page={{nextPage}}">Prox</a>
-				</div>
+				<a class="btn next-btn" href="?page={{nextPage}}">
+					<i class="fa-solid fa-right-long"></i>
+				</a>
 			{{else}}
-				<div class="invisible-btn">Prox</div>
+				<div class="invisible-btn">
+					<i class="fa-solid fa-right-long"></i>
+				</div>
 			{{/if}}
 		</div>
 	</div>
