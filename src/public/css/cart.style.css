@@ -36,6 +36,14 @@
 	font-weight: 700;
 }
 
+.continue-shopping {
+	display: flex;
+	align-items: center;
+	color: #15172b;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
 .product-card {
 	height: auto;
 }
