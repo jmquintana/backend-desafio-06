@@ -137,13 +137,6 @@ body {
 	-moz-border-radius: 9px;
 	border-radius: 9px;
 	text-decoration: none;
-}
-
-.label-warning[href],
-.badge-warning[href] {
-	background-color: #c67605;
-}
-#lblCartCount {
 	font-size: 12px;
 	background: #ff0000;
 	color: #fff;

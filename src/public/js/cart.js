@@ -2,11 +2,10 @@ const incrementBtn = document.querySelectorAll(".increment-btn");
 const decrementBtn = document.querySelectorAll(".decrement-btn");
 const cartDeleteBtn = document.querySelectorAll(".cart-delete-btn");
 const cartQuantity = document.querySelectorAll(".cart-quantity");
-const cartSubTotal = document.querySelectorAll(".product-card-total-value");
 const cartTotal = document.querySelector(".cart-total-price-value");
 const cartId = document.querySelector(".cart-main-container").id;
 
-// Update cart quantity
+// Add product to cart
 incrementBtn.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		e.preventDefault();
@@ -48,11 +47,15 @@ const addProductToCart = async (productId, cartId, newQuantity) => {
 
 // Delete product from cart
 const deleteProductFromCart = async (productId, cartId, newQuantity) => {
-	try {
+	if (newQuantity) {
 		updateQuantityLabel(productId, newQuantity);
 		updateProductTotal(productId);
-		updateCartTotal();
-		fetch(`/api/carts/${cartId}/product/${productId}`, {
+	} else {
+		document.getElementById(productId).remove();
+	}
+	updateCartTotal();
+	try {
+		await fetch(`/api/carts/${cartId}/product/${productId}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",
@@ -80,7 +83,10 @@ const getProductValues = (e, diff) => {
 };
 
 const updateQuantityLabel = (productId, quantity) => {
-	if (quantity === 0) window.location.reload();
+	if (quantity === 0) {
+		document.getElementById(productId).remove();
+		// window.location.reload();
+	}
 	const productElement = document.getElementById(productId);
 	const productQuantityElement = productElement.querySelector(
 		".product-card-quantity-value"
@@ -106,6 +112,7 @@ const updateProductTotal = (productId) => {
 // Update cart total
 const updateCartTotal = () => {
 	let total = 0;
+	const cartSubTotal = document.querySelectorAll(".product-card-total-value");
 	cartSubTotal.forEach((subtotal) => {
 		total += parseInt(subtotal.innerText);
 	});
